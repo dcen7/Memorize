@@ -12,13 +12,12 @@ struct ContentView: View {
     var viewModel: EmojiMemoryGame
     
     var body: some View {
-         HStack {
+        HStack {
             ForEach(viewModel.cards) { card in
                 CardView(card: card).onTapGesture {
                     self.viewModel.choose(card: card)
                 }
             }
-            
         }
             .padding()
             .foregroundColor(Color.orange)
@@ -27,10 +26,12 @@ struct ContentView: View {
 }
 
 struct CardView: View{
+    
     var card: MemoryGame<String>.Card
+    
     var body: some View {
         ZStack {
-            if card.isFaceUp {
+            if card.isFaceUP {
                 RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
                 RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 3)
                 Text(card.content)
